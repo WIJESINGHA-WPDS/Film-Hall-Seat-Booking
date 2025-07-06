@@ -1,0 +1,78 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #1A1A2E; /* Matches App.css background */
+}
+
+.register-card {
+  background-color: #1A1A2E; /* Same as container for seamless look */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  max-width: 400px;
+}
+
+.register-title {
+  margin-bottom: 24px;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #4EA8DE; /* Cool Blue */
+  font-size: 16px;
+  background-color: #2c2c2c;
+  color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus {
+  border-color: #FFD166; /* Gold accent */
+  box-shadow: 0 0 5px #FFD166;
+  outline: none;
+}
+
+form input.error {
+  border-color: #ff4c4c;
+}
+
+.error-text {
+  color: #ff4c4c;
+  font-size: 14px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: #ea2ee4; /* Royal Purple */
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #FFD166;
+  color: #1A1A2E;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+  
