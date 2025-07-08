@@ -1,169 +1,96 @@
-import React, { useEffect, useState } from 'react';
-import MovieCard from '../components/MovieCard';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import Footer from '../components/Footer';
 
+// 🔧 Dummy movie data
 const mockMovies = [
   {
-    _id: '1',
-    title: 'Inception',
-    poster: 'https://m.media-amazon.com/images/I/81p+xe8cbnL._AC_SY679_.jpg',
-    description: 'A skilled thief leads dream heists to steal secrets.',
+    movieId: '1',
+    movieTitle: 'Inception',
+    movieGenre: 'Action, Sci-Fi',
+    movieReleaseDate: '2010',
+    poster: 'https://m.media-amazon.com/images/I/81p+xe8cbnL._AC_SY679_.jpg'
   },
   {
-    _id: '2',
-    title: 'Interstellar',
-    poster: 'https://m.media-amazon.com/images/I/71yMHa3U2tL._AC_SY679_.jpg',
-    description: 'A team explores space to save humanity’s future.',
+    movieId: '2',
+    movieTitle: 'Interstellar',
+    movieGenre: 'Adventure, Drama, Sci-Fi',
+    movieReleaseDate: '2014',
+    poster: 'https://m.media-amazon.com/images/I/71yMHa3U2tL._AC_SY679_.jpg'
   },
   {
-    _id: '3',
-    title: 'Dunkirk',
-    poster: 'https://m.media-amazon.com/images/I/81VJcIMQkGL._AC_SY679_.jpg',
-    description: 'WWII survival epic told from land, sea, and air.',
-  },
+    movieId: '3',
+    movieTitle: 'Dunkirk',
+    movieGenre: 'Drama, War',
+    movieReleaseDate: '2017',
+    poster: 'https://m.media-amazon.com/images/I/81VJcIMQkGL._AC_SY679_.jpg'
+  }
 ];
 
-export default function Home() {
-  const [movies, setMovies] = useState([]);
+const genres = ["All", "Action", "Drama", "Adventure", "Sci-Fi", "War"];
+
+const Home = () => {
+  const [allMovies, setAllMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [selectedGenre, setSelectedGenre] = useState("All");
 
   useEffect(() => {
-    setMovies(mockMovies);
+    setAllMovies(mockMovies);
+    setFilteredMovies(mockMovies);
+    document.title = 'Home - Film Hall Booking';
   }, []);
 
+  const filterMoviesByGenre = (genre) => {
+    setSelectedGenre(genre);
+    if (genre === "All") {
+      setFilteredMovies(allMovies);
+    } else {
+      const filtered = allMovies.filter(movie =>
+        movie.movieGenre.toLowerCase().includes(genre.toLowerCase())
+      );
+      setFilteredMovies(filtered);
+    }
+  };
+
   return (
-    <main style={styles.container}>
-      {/* Hero Section */}
-      <section style={styles.hero}>
-        <h1 style={styles.heroTitle}>🎬 Welcome to Film Hall Booking</h1>
-        <p style={styles.heroSubtitle}>Experience cinema like never before. Book your favorite movies online in seconds.</p>
-        <button style={styles.primaryButton} onClick={() => window.location.href = '/login'}>
-          Book Now
-        </button>
-      </section>
+    <div className='dark:bg-slate-900'>
+      {/* Genre Filter Buttons */}
+      <div className="flex justify-center my-5">
+        {genres.map((genre, index) => (
+          <button
+            key={index}
+            className={`px-5 py-2 mx-2 rounded-full bg-gray-300 cursor-pointer transition-colors duration-300 font-semibold 
+              ${selectedGenre === genre ? 'bg-red-500 text-white' : 'hover:bg-gray-400'}`}
+            onClick={() => filterMoviesByGenre(genre)}
+          >
+            {genre}
+          </button>
+        ))}
+      </div>
 
-      {/* Now Showing */}
-      <section>
-        <h2 style={styles.sectionTitle}>🍿 Now Showing</h2>
-        <div style={styles.movieGrid}>
-          {movies.map(movie => (
-            <MovieCard key={movie._id} movie={movie} />
-          ))}
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section style={styles.stepsSection}>
-        <h2 style={styles.sectionTitle}>📘 How It Works</h2>
-        <div style={styles.stepsGrid}>
-          {['Select a Movie', 'Choose Show Time', 'Pick Your Seats', 'Confirm & Pay'].map((step, index) => (
-            <div key={index} style={styles.step}>
-              <strong>{index + 1}.</strong> {step}
+      {/* Movie Grid */}
+      <div className={`flex flex-wrap justify-start mt-10 w-[90vw] mx-auto dark:text-white`}>
+        {filteredMovies.map((movie, index) => (
+          <Link to={`/MovieDetails/${movie.movieId}`} key={index} className="mr-10 mb-7">
+            <div className="w-[222px]">
+              <div className="relative w-[222px] h-[340px] overflow-hidden">
+                <img
+                  src={movie.poster}
+                  alt={movie.movieTitle}
+                  className="w-[222px] h-[340px] rounded-md"
+                />
+              </div>
+              <div className="my-2 font-medium">{movie.movieReleaseDate}</div>
+              <div className="my-1 font-semibold">{movie.movieTitle}</div>
+              <div className="my-1 text-sm opacity-80">{movie.movieGenre}</div>
             </div>
-          ))}
-        </div>
-      </section>
+          </Link>
+        ))}
+      </div>
 
-      {/* Call to Action */}
-      <section style={styles.ctaSection}>
-        <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🎟️ Ready to Book Your Seat?</h2>
-        <p style={{ fontSize: '1.1rem' }}>Sign in or register to start booking today!</p>
-        <button style={styles.secondaryButton} onClick={() => window.location.href = '/register'}>
-          Get Started
-        </button>
-      </section>
-    </main>
+     
+    </div>
   );
-}
-
-const styles = {
-  container: {
-    padding: '2rem',
-    fontFamily: 'Segoe UI, sans-serif',
-    backgroundColor: '#f9f9f9',
-    color: '#333',
-  },
-
-  hero: {
-    background: 'linear-gradient(135deg, #1e3c72, #2a5298)',
-    color: '#fff',
-    padding: '3rem 2rem',
-    textAlign: 'center',
-    borderRadius: '12px',
-    marginBottom: '3rem',
-  },
-  heroTitle: {
-    fontSize: '3rem',
-    marginBottom: '1rem',
-    fontWeight: 'bold',
-  },
-  heroSubtitle: {
-    fontSize: '1.25rem',
-    marginBottom: '1.5rem',
-    maxWidth: '600px',
-    margin: '0 auto 1.5rem',
-  },
-  primaryButton: {
-    backgroundColor: '#ff6f00',
-    color: '#fff',
-    padding: '12px 28px',
-    fontSize: '1rem',
-    border: 'none',
-    borderRadius: '8px',
-    cursor: 'pointer',
-    transition: 'background 0.3s',
-  },
-
-  sectionTitle: {
-    fontSize: '2rem',
-    textAlign: 'center',
-    margin: '2rem 0 1rem',
-    color: '#222',
-  },
-
-  movieGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
-    gap: '1.5rem',
-    padding: '0 1rem',
-  },
-
-  stepsSection: {
-    backgroundColor: '#fff',
-    padding: '2rem 1rem',
-    marginTop: '3rem',
-    borderRadius: '12px',
-    boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
-  },
-  stepsGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-    gap: '1.5rem',
-    marginTop: '1.5rem',
-    textAlign: 'center',
-  },
-  step: {
-    backgroundColor: '#f1f1f1',
-    padding: '1.2rem',
-    borderRadius: '10px',
-    fontSize: '1rem',
-    boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
-  },
-
-  ctaSection: {
-    textAlign: 'center',
-    marginTop: '4rem',
-    padding: '3rem 2rem',
-    backgroundColor: '#e3f2fd',
-    borderRadius: '12px',
-  },
-  secondaryButton: {
-    backgroundColor: '#1976d2',
-    color: '#fff',
-    padding: '12px 28px',
-    fontSize: '1rem',
-    border: 'none',
-    borderRadius: '8px',
-    cursor: 'pointer',
-    marginTop: '1rem',
-    transition: 'background 0.3s',
-  },
 };
+
+export default Home;

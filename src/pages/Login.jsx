@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "./Register.css"; // Assuming you have a CSS file for styling
-// Reusing the same CSS for consistency
+import { Link } from "react-router-dom"; // ← Import Link
+import "./Register.css"; // You can reuse the styling file
 
 const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -25,7 +25,7 @@ const Login = () => {
     } else {
       setErrors({});
       alert(`Logged in as ${form.email}`);
-      // You can add API call here
+      // You can add an API call here
     }
   };
 
@@ -58,6 +58,11 @@ const Login = () => {
 
           <button type="submit">Login</button>
         </form>
+
+        {/* 👇 Add this Register Link */}
+        <div className="register-link">
+          Don’t have an account? <Link to="/register">Register here</Link>
+        </div>
       </div>
     </div>
   );
