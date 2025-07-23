@@ -1,9 +1,14 @@
+import React from 'react';
+import Hero from '../components/Hero/Hero'
+import Navbar from '../components/Navbar';
+import './Home.css';
+import Footer from '../components/Footer';
+
 const Home = () => {
   return (
-    <div>
-      <h1>Welcome to Film Ticket Booking</h1>
-      <p>Select your movie and book your seats easily.</p>
-    </div>
+    <div className='home-page'><>
+    <Hero />
+    </></div>
   );
 };
 

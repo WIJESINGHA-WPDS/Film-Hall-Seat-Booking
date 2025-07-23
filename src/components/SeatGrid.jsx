@@ -1,41 +1,39 @@
 import React from 'react';
+import './SeatGrid.css'; // Import the CSS file
 
-export default function SeatGrid({ seats, bookedSeats = [], onToggle }) {
+const premiumSeats = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6'];
+
+const SeatGrid = ({ rows, bookedSeats, onToggle }) => {
   return (
-    <div style={styles.grid}>
-      {seats.map(seat => {
-        const isBooked = bookedSeats.includes(seat);
-        return (
-          <button
-            key={seat}
-            disabled={isBooked}
-            onClick={() => onToggle(seat)}
-            style={{
-              ...styles.seat,
-              backgroundColor: isBooked ? '#ccc' : '#007bff',
-              cursor: isBooked ? 'not-allowed' : 'pointer',
-            }}
-          >
-            {seat}
-          </button>
-        );
-      })}
+    <div className="seat-container">
+      <div className="screen">SCREEN</div>
+      <div className="seat-grid">
+        {rows.map((row, rowIndex) => (
+          <div key={rowIndex} className="seat-row">
+            {row.map((seat, seatIndex) => {
+              if (seat === '') {
+                return <div key={`aisle-${seatIndex}`} className="aisle" />;
+              }
+
+              const isBooked = bookedSeats.includes(seat);
+              const isPremium = premiumSeats.includes(seat);
+
+              return (
+                <button
+                  key={seat}
+                  disabled={isBooked}
+                  onClick={() => onToggle(seat)}
+                  className={`seat ${isBooked ? 'booked' : isPremium ? 'premium' : 'available'}`}
+                >
+                  {seat}
+                </button>
+              );
+            })}
+          </div>
+        ))}
+      </div>
     </div>
   );
-}
-
-const styles = {
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, 60px)',
-    gap: '0.5rem',
-    justifyContent: 'center',
-  },
-  seat: {
-    padding: '0.75rem',
-    border: 'none',
-    borderRadius: '4px',
-    color: '#fff',
-    fontWeight: 'bold',
-  },
 };
+
+export default SeatGrid;
