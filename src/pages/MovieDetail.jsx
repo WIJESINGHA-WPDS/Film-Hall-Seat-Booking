@@ -1,21 +1,20 @@
-// src/pages/MovieDetail.js
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import MovieGrid from '../components/MovieGrid';
 
 export default function MovieDetail() {
   const { id } = useParams();
 
-  // Example: You can replace this with an API call later
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>Movie Details</h1>
-      <p style={styles.text}>You are viewing details for movie ID: <strong>{id}</strong></p>
+    <div className="min-h-screen bg-gray-100">
+      <div className="max-w-5xl mx-auto py-8 px-4">
+        <h1 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+          NOW SHOWING
+        </h1>
+        <MovieGrid />
+      </div>
     </div>
   );
 }
 
-const styles = {
-  container: { padding: '2rem', textAlign: 'center' },
-  title: { fontSize: '2rem', marginBottom: '1rem' },
-  text: { fontSize: '1.2rem' }
-};
+

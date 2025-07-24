@@ -38,7 +38,7 @@
     font-size: 4rem;
     line-height: 1.1;
     background-color: #00a4aa;
-    background-image: linear-gradient(45deg, #00a4aa, #000);
+    background-image: linear-gradient(45deg, #ffffff, #ffffff);
     background-size: 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -59,7 +59,7 @@
 
 .slider-btn{
     display: inline-block;
-    color: #717171;
+    color: #000000;
     background: #fff;
     padding: 0.625rem 1.875rem;
     margin-top: 2.125rem;
@@ -76,7 +76,7 @@
 }
 
 .Hero {
-  background-image: url('./images/images.jpeg');
+  background-image: url('./images/3d-view-couple-cinema-watching-movie.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -108,7 +108,7 @@
 :global(.myswiper) {
     width:100%;
     padding-bottom: 5rem;
-    
+
 }
 
 :global(.myswiper-slider) {
