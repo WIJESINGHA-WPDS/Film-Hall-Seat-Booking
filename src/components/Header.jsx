@@ -8,7 +8,7 @@ const Header = () => {
       <div style={styles.logo}>🎟️ <span style={styles.logoText}>Film Hall Booking</span></div>
       <nav style={styles.nav}>
         <Link to="/" style={styles.link}>Home</Link>
-        <Link to="/movie/1" style={styles.link}>Movies</Link>
+        <Link to="/movie/" style={styles.link}>Movies</Link>
         <Link to="/booking/1" style={styles.link}>Booking</Link>
         <Link to="/login" style={styles.link}>Login</Link>
       </nav>

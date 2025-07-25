@@ -9,6 +9,8 @@ import Register from './pages/Register';
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import MovieInfo from './pages/MovieInfo';
+import SeatBooking from './components/SeatBooking';
 
 
 function App() {
@@ -19,11 +21,12 @@ function App() {
       
         <div className="page-content">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home/>} />
             <Route path="/booking/:showId" element={<Booking />} />
-            <Route path="/movie/:id" element={<MovieDetail />} />
+            <Route path="/movie/" element={<MovieDetail />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/info/:id" element={<MovieInfo />} />
           </Routes>
         </div>
         <Footer />
