@@ -27,6 +27,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/info/:id" element={<MovieInfo />} />
+            
           </Routes>
         </div>
         <Footer />

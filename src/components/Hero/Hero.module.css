@@ -61,19 +61,19 @@
 .slider-btn{
     display: inline-block;
     color: #000000;
-    background: #fff;
+    background: #ffd502;
     padding: 0.625rem 1.875rem;
     margin-top: 2.125rem;
     text-decoration: none;
     text-transform: uppercase;
-    border: 2px solid #c2c2c2;
+    border: 0.8px solid #000000;
     border-radius: 3.125rem;
     transition: 0.3s ease-in-out;
 }
 
 .slider-btn:hover {
-    border: 0.125rem solid #00a4aa;
-    color:#00a4aa;
+    border: 0.125rem solid #ffffff;
+    color:#ffffff;
 }
 
 .Hero {
@@ -96,7 +96,7 @@
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6); /* dark overlay */
+  background: rgba(0, 0, 0, 0.6); 
   z-index: 1;
 }
 
@@ -107,13 +107,14 @@
 }
 
 :global(.myswiper) {
-    width:100%;
+    width:75%;
     padding-bottom: 5rem;
+
 
 }
 
 :global(.myswiper-slider) {
-    width: 18.75rem;
+    width: 15.75rem;
     height: 28.125rem;
     background-size: cover;
     background-position: center;
@@ -122,30 +123,34 @@
 :global(.myswiper-slider div) {
     display: none;
     opacity: 0;
-    padding-bottom: 0.625rem;
+    padding-bottom: rem;
+    
 }
 
 :global(.swiper-slide-active div) {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    align-items: flex-start;
+    justify-content: flex-start;
     opacity: 1;
     background-color: rgba(0, 0, 0, 0.5);
     height: 100%;
-}
+    padding: 16rem 1rem 50px;}
 
 :global(.swiper-slide-active div a) {
     align-self: flex-start;
 }
 
 :global(.myswiper-slider h2) {
-    color: #fff;
+    color: #ffffff;
+    
     font-weight: 400;
     font-size: 1.4rem;
     line-height: 1.4;
     margin-bottom: 0.625rem;
+    margin-left: 1.3rem;
     padding: 0,0,0, 1.563rem;
-    text-transform: uppercase;
+    text-transform:capitalize;
 }
 
 :global(.myswiper-slider p) {
@@ -156,13 +161,17 @@
 }
 
 :global(.myswiper-slider a) {
-    margin: 1.25rem 1.5rem 3.5rem;
+    margin: 1.25rem 1.0rem 3.5rem;
 }
 
 :global(.myswiper-slider a :hover) {
     color: #00a4aa;
 }
 
-:global(.swiper-pagination-bullet,.swiper-pagination-bullet-active) {
+:global(.swiper-pagination-bullet,.swiper-pagination-bullet) {
     background: #fff;
+}
+
+:global(.swiper-pagination-bullet-active,.swiper-pagination-bullet) {
+    background: #00a4aa;
 }

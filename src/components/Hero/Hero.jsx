@@ -1,6 +1,6 @@
 import React from 'react'
 
-import filmHallBackground from './images/dark-vip-cinema-studio-still-life (2).jpg'
+import { Link } from 'react-router-dom';
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, EffectCoverflow, Autoplay } from 'swiper/modules'
@@ -13,25 +13,25 @@ import "swiper/css/autoplay";
 import styles from './Hero.module.css'
 
 const slider = [
-{title: " The Thor",
-  description: "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-  url: "/2.jpeg",},
+{title: "Devi Kusumasana",
+  description: "Devi Kusumasana, a 2025 Sri Lankan historical drama by Jayantha Chandrasiri, follows his acclaimed films *Maharaja Gemunu* and *Midunu Vishwaya",
+  url: "./1_DeviKusumasana.jpg",},
 
-  {title: " The SpiderMan",
-  description: "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-  url: "/3.jpeg",},
+  {title: "Valampuri",
+  description: "Valampoori (1981) is a Sinhala film starring Vijaya Kumaranatunga and Geetha Kumarasinghe, directed by Bermin Lylie Fernando—classic Sri Lankan cinema romance and drama",
+  url: "/2_Valampuri.jpg",},
 
-  {title: " The BatMan",
-  description: "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-  url: "/4.jpg",},
+  {title: "Baagi",
+  description: "Baaghi, a 2016 Hindi action-romance starring Tiger Shroff and Shraddha Kapoor, follows a martial artist’s dangerous mission to rescue his kidnapped love",
+  url: "/3_Baagi.jpg",},
 
-  {title: " The IronMan",
-  description: "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-  url: "/5.jpeg",},
+  {title: "Dragon",
+  description: "How to Train Your Dragon follows Hiccup, a young Viking, who befriends a dragon, challenging tradition and uniting humans and dragons through friendship",
+  url: "/4_Dragon.jpg",},
 
-  {title: " The SuperMan",
-  description: "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-  url: "/1.jpg",},
+  {title: "Clarance",
+  description: "Rhythm of the Guitar: Clarence is a biographical musical film portraying Clarence Wijewardena’s pioneering journey in Sinhala pop music via the electric guitar",
+  url: "/5_Clarance.jpg",},
 
   
 ]
@@ -45,9 +45,11 @@ const Hero = () => {
           <h1>Ongoing Films</h1>
           <hr />
           <p>
-            simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+           Experience the latest blockbusters and local favorites on the big screen. Stay entertained with movies that everyone is talking about!
           </p>
-          <a href="#" className={styles['slider-btn']}>Ongiong Movies</a>
+          <Link to="/movie" className={styles['slider-btn']}>
+            View All Movies
+          </Link>
         </div>
       </div>
 
@@ -93,7 +95,7 @@ const Hero = () => {
               <div>
                 <h2>{data.title}</h2>
                 <p>{data.description}</p>
-                <a href={`${data.url}`} target="_blank" className={styles ['slider-btn']}>explore</a>
+                <a href={`${data.url}`} target="_blank" className={styles ['slider-btn']}>book here</a>
               </div>
 
             </SwiperSlide>
@@ -104,4 +106,4 @@ const Hero = () => {
   )
 }
 
-export default Hero
+export default Hero;
